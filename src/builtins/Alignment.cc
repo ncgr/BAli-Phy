@@ -307,7 +307,7 @@ extern "C" closure builtin_function_load_alignment(OperationArgs& Args)
     return A;
 }
 
-extern "C" closure builtin_function_get_leaf_constraint(OperationArgs& Args)
+extern "C" closure builtin_function_leaf_alignment_constraint(OperationArgs& Args)
 {
     // 1. Read the arguments
 
@@ -322,7 +322,7 @@ extern "C" closure builtin_function_get_leaf_constraint(OperationArgs& Args)
     int s = Args.evaluate(2).as_int();
 
     // 1d: sequence length
-    int L = Args.evaluate(3).as_int();
+    int L = Args.evaluate(3).as_<Vector<int>>().size();
 
     // 2. Create the constraint vector
 
@@ -411,7 +411,7 @@ inline optional<int> lookup(const vector<optional<int>>& array, const optional<i
 	return index;
 }
 
-extern "C" closure builtin_function_merge_leaf_constraints(OperationArgs& Args)
+extern "C" closure builtin_function_merge_alignment_constraints(OperationArgs& Args)
 {
     using boost::get;
 
