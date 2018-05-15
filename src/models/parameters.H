@@ -36,6 +36,7 @@
 #include "models/model.H"
 #include "imodel/imodel.H"
 #include "alignment/alignment.H"
+#include "alignment/alignment-constraint.H"
 
 #include "tools/partition.H"
 #include "cow-ptr.H"
@@ -58,7 +59,11 @@ struct data_partition_constants
 
     int cl_index;
 
+    int alignment_constraints_index;
+
     std::vector<int> conditional_likelihoods_for_branch;
+
+    std::vector<int> alignment_constraints_for_branch;
 
     std::vector<int> leaf_sequence_indices;
 
@@ -140,6 +145,8 @@ public:
     /// cached branch HMMs
     const indel::PairHMM& get_branch_HMM(int b) const;
     std::vector<indel::PairHMM> get_branch_HMMs(const std::vector<int>&) const;
+
+    object_ptr<const alignment_constraints> get_branch_alignment_constraints(int b) const;
 
     double sequence_length_pr(int i) const;
 
