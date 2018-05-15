@@ -21,10 +21,20 @@ along with BAli-Phy; see the file COPYING.  If not see
 
 #include <boost/program_options.hpp>
 #include <boost/dynamic_bitset.hpp>
+#include <boost/optional.hpp>
+#include <tuple>
 #include <utility>
 #include "alignment/alignment.H"
 #include "tree/sequencetree.H"
+#include "dp/2way.H"
 #include "io.H"
+
+typedef std::tuple<int, boost::optional<int>, boost::optional<int>> alignment_constraint;
+typedef Vector<alignment_constraint> alignment_constraints;
+
+std::vector<boost::optional<int>> get_max_y_le_x(const pairwise_alignment_t& a_xy);
+std::vector<boost::optional<int>> get_min_y_ge_x(const pairwise_alignment_t& a_xy);
+boost::optional<int> lookup(const std::vector<boost::optional<int>>& array, const boost::optional<int>& index);
 
 matrix<int> load_alignment_constraint(const std::string& filename,SequenceTree& T);
 
