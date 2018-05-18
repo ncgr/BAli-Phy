@@ -29,7 +29,7 @@ along with BAli-Phy; see the file COPYING.  If not see
 #include "dp/2way.H"
 #include "io.H"
 
-typedef std::tuple<int, boost::optional<int>, boost::optional<int>> alignment_constraint;
+typedef std::tuple<int, boost::optional<int>, boost::optional<int>, int> alignment_constraint;
 typedef Vector<alignment_constraint> alignment_constraints;
 
 std::vector<boost::optional<int>> get_max_y_le_x(const pairwise_alignment_t& a_xy);
