@@ -37,7 +37,7 @@ std::vector<boost::optional<int>> get_min_y_ge_x(const pairwise_alignment_t& a_x
 boost::optional<int> lookup(const std::vector<boost::optional<int>>& array, const boost::optional<int>& index);
 alignment_constraints merge_alignment_constraints(const alignment_constraints& con_x, const pairwise_alignment_t& a_xz,
 						  const alignment_constraints& con_y, const pairwise_alignment_t& a_yz,
-						  const std::vector<int>& totals);
+						  const std::pair<matrix<int>,std::vector<int>>& totals);
 
 std::vector<int> count_constrained_characters(const matrix<int>& m);
 std::pair<matrix<int>,std::vector<int>> constraint_matrix_from_alignment(const alignment& A, int n);
